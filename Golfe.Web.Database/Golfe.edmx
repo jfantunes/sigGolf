@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GolfeModel.Store" Alias="Self" Provider="Npgsql" ProviderManifestToken="9.3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="GolfeModelStoreContainer">
+          <EntitySet Name="areajogo" EntityType="GolfeModel.Store.areajogo" store:Type="Tables" Schema="public" />
+          <EntitySet Name="funcionarios" EntityType="GolfeModel.Store.funcionarios" store:Type="Tables" Schema="public" />
+          <EntitySet Name="maquina" EntityType="GolfeModel.Store.maquina" store:Type="Tables" Schema="public" />
+          <EntitySet Name="tarefasgerais" EntityType="GolfeModel.Store.tarefasgerais" store:Type="Tables" store:Schema="public" store:Name="tarefasgerais">
+            <DefiningQuery>SELECT "tarefasgerais"."areajogo", "tarefasgerais"."operacao", "tarefasgerais"."maquina", "tarefasgerais"."funcionario", "tarefasgerais"."datainicio", "tarefasgerais"."id", "tarefasgerais"."done" FROM "public"."tarefasgerais" AS "tarefasgerais"</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <EntityType Name="areajogo">
+          <Key>
+            <PropertyRef Name="area" />
+          </Key>
+          <Property Name="area" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="funcionarios">
+          <Key>
+            <PropertyRef Name="nome" />
+          </Key>
+          <Property Name="nome" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="maquina">
+          <Key>
+            <PropertyRef Name="nome" />
+          </Key>
+          <Property Name="nome" Type="text" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'golfe.public.tarefasgerais' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="tarefasgerais">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="done" />
+          </Key>
+          <Property Name="areajogo" Type="text" />
+          <Property Name="operacao" Type="text" />
+          <Property Name="maquina" Type="text" />
+          <Property Name="funcionario" Type="text" />
+          <Property Name="datainicio" Type="date" />
+          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="done" Type="bool" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'golfe.public.manutencao' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="manutencao">
+        <Property Name="areajogo" Type="text" />
+        <Property Name="operacao" Type="text" />
+        <Property Name="maquina" Type="text" />
+      </EntityType>-->
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GolfeModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="GolfeEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="areajogo" EntityType="GolfeModel.areajogo" />
+          <EntitySet Name="funcionarios" EntityType="GolfeModel.funcionarios" />
+          <EntitySet Name="maquina" EntityType="GolfeModel.maquina" />
+          <EntitySet Name="tarefasgerais" EntityType="GolfeModel.tarefasgerais" />
+        </EntityContainer>
+        <EntityType Name="areajogo">
+          <Key>
+            <PropertyRef Name="area" />
+          </Key>
+          <Property Name="area" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="funcionarios">
+          <Key>
+            <PropertyRef Name="nome" />
+          </Key>
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="maquina">
+          <Key>
+            <PropertyRef Name="nome" />
+          </Key>
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tarefasgerais">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="done" />
+          </Key>
+          <Property Name="areajogo" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="operacao" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="maquina" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="funcionario" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="datainicio" Type="DateTime" Precision="0" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="done" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GolfeModelStoreContainer" CdmEntityContainer="GolfeEntities">
+          <EntitySetMapping Name="areajogo">
+            <EntityTypeMapping TypeName="GolfeModel.areajogo">
+              <MappingFragment StoreEntitySet="areajogo">
+                <ScalarProperty Name="area" ColumnName="area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="funcionarios">
+            <EntityTypeMapping TypeName="GolfeModel.funcionarios">
+              <MappingFragment StoreEntitySet="funcionarios">
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="maquina">
+            <EntityTypeMapping TypeName="GolfeModel.maquina">
+              <MappingFragment StoreEntitySet="maquina">
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tarefasgerais">
+            <EntityTypeMapping TypeName="GolfeModel.tarefasgerais">
+              <MappingFragment StoreEntitySet="tarefasgerais">
+                <ScalarProperty Name="areajogo" ColumnName="areajogo" />
+                <ScalarProperty Name="operacao" ColumnName="operacao" />
+                <ScalarProperty Name="maquina" ColumnName="maquina" />
+                <ScalarProperty Name="funcionario" ColumnName="funcionario" />
+                <ScalarProperty Name="datainicio" ColumnName="datainicio" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="done" ColumnName="done" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
