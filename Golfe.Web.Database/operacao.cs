@@ -12,14 +12,9 @@ namespace Golfe.Web.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class tarefasgerais
+    public partial class operacao
     {
-        public string areajogo { get; set; }
-        public string operacao { get; set; }
-        public string maquina { get; set; }
-        public string funcionario { get; set; }
-        public System.DateTime data { get; set; }
-        public bool concluida { get; set; }
+        public string nome { get; set; }
         public int id { get; set; }
     }
 }

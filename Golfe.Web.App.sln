@@ -1,9 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Golfe.Web.App", "Golfe.Web.App\Golfe.Web.App.csproj", "{D7623CD5-EE48-4462-A5BE-E3FDA2E1CD23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Golfe.Web.Database", "Golfe.Web.Database\Golfe.Web.Database.csproj", "{37C15338-C125-4053-AE72-1605CB6C1046}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Golfe.Data.Database", "Golfe.Web.Database\Golfe.Data.Database.csproj", "{37C15338-C125-4053-AE72-1605CB6C1046}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9B2BC0A3-3834-4FBD-8ED3-BDC9CBE14A50}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Golfe.Data.Repository", "Golfe.Data.Repository\Golfe.Data.Repository.csproj", "{656150C2-2056-44B1-A3A5-DCF5447E2157}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Golfe.Data.Models", "Golfe.Data.Models\Golfe.Data.Models.csproj", "{0112666A-A25C-4AB2-8CE6-1CA6C3E48E49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{49D599C9-F055-4123-8038-E3495D2ABCA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +44,24 @@ Global
 		{37C15338-C125-4053-AE72-1605CB6C1046}.Release|Any CPU.Build.0 = Release|Any CPU
 		{37C15338-C125-4053-AE72-1605CB6C1046}.Release|x86.ActiveCfg = Release|x86
 		{37C15338-C125-4053-AE72-1605CB6C1046}.Release|x86.Build.0 = Release|x86
+		{656150C2-2056-44B1-A3A5-DCF5447E2157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{656150C2-2056-44B1-A3A5-DCF5447E2157}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{656150C2-2056-44B1-A3A5-DCF5447E2157}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{656150C2-2056-44B1-A3A5-DCF5447E2157}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{656150C2-2056-44B1-A3A5-DCF5447E2157}.Release|Any CPU.Build.0 = Release|Any CPU
+		{656150C2-2056-44B1-A3A5-DCF5447E2157}.Release|x86.ActiveCfg = Release|Any CPU
+		{0112666A-A25C-4AB2-8CE6-1CA6C3E48E49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0112666A-A25C-4AB2-8CE6-1CA6C3E48E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0112666A-A25C-4AB2-8CE6-1CA6C3E48E49}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0112666A-A25C-4AB2-8CE6-1CA6C3E48E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0112666A-A25C-4AB2-8CE6-1CA6C3E48E49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0112666A-A25C-4AB2-8CE6-1CA6C3E48E49}.Release|x86.ActiveCfg = Release|Any CPU
+		{49D599C9-F055-4123-8038-E3495D2ABCA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D599C9-F055-4123-8038-E3495D2ABCA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D599C9-F055-4123-8038-E3495D2ABCA3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{49D599C9-F055-4123-8038-E3495D2ABCA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D599C9-F055-4123-8038-E3495D2ABCA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49D599C9-F055-4123-8038-E3495D2ABCA3}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
