@@ -24,14 +24,18 @@ namespace Golfe.Data.Repository.Repositories
         {
             try
             {
-                using (var db=new golfEntities())
+                using (var db=new golfeEntities())
                 {
 
                     var tarefas = from t in db.tarefasgerais
                         orderby t.id descending
                         select t;
-
-                    return this._mapper.Map<IEnumerable<tarefasgerais>, IEnumerable<Tarefas>>(tarefas);
+                    if (tarefas.Any())
+                        return this._mapper.Map<IEnumerable<tarefasgerais>, IEnumerable<Tarefas>>(tarefas);
+                   
+                    return null;
+                   
+                    
                 }
             }
             catch (Exception e)
@@ -46,7 +50,7 @@ namespace Golfe.Data.Repository.Repositories
         {
             try
             {
-                using (var db = new golfEntities())
+                using (var db = new golfeEntities())
                 {
                     var tarefas = (from t in db.tarefasgerais
                         where
@@ -69,7 +73,7 @@ namespace Golfe.Data.Repository.Repositories
         {
             try
             {
-                using (var db = new golfEntities())
+                using (var db = new golfeEntities())
                 {
                     var tarefaFound = db.tarefasgerais.Find(id);
                     return tarefaFound != null ? this._mapper.Map<Tarefas>(tarefaFound) : null;
@@ -87,11 +91,11 @@ namespace Golfe.Data.Repository.Repositories
         {
             try
             {
-                using (var db = new golfEntities())
+                using (var db = new golfeEntities())
                 {
 
                     var tarefaFound = db.tarefasgerais.Find(id);
-                    if (tarefaFound == null) return;
+                    if (tarefaFound == null) throw new ArgumentException("Id not in database"); ;
 
                     tarefaFound.areajogo = tarefa.AreaJogo;
                     tarefaFound.concluida = tarefa.Concluida;
@@ -114,7 +118,7 @@ namespace Golfe.Data.Repository.Repositories
         {
             try
             {
-                using (var db = new golfEntities())
+                using (var db = new golfeEntities())
                 {
                     var tarefaToAdd = this._mapper.Map<Tarefas, tarefasgerais>(tarefa);
                     db.tarefasgerais.Add(tarefaToAdd);
@@ -132,7 +136,7 @@ namespace Golfe.Data.Repository.Repositories
         {
             try
             {
-                using (var db = new golfEntities())
+                using (var db = new golfeEntities())
                 {
                     var tarefaToDelete = db.tarefasgerais.Find(id);
                     if (tarefaToDelete == null) return;
@@ -147,7 +151,7 @@ namespace Golfe.Data.Repository.Repositories
             
         }
 
-        public void Save(golfEntities db)
+        public void Save(golfeEntities db)
         {
              db.SaveChanges();
         }
@@ -155,7 +159,11 @@ namespace Golfe.Data.Repository.Repositories
        
         public void Dispose()
         {
-           
+            using (var db = new golfeEntities())
+            {
+                db.Dispose();
+            }
+
         }
     }
 }

@@ -1,0 +1,18 @@
+#main-navbar {
+    margin-bottom:0;
+}
+
+.ol-popup-content {
+	min-width: 310px !important;
+    max-height: 200px !important;
+    overflow-x: auto !important;
+	overflow-y:auto !important;
+
+}
+
+.layer-switcher.shown .panel
+{
+	max-height:600px;
+	overflow-y:scroll;
+
+}

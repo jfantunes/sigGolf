@@ -1,4 +1,0 @@
-﻿BACKBONE.VIEW.MAP = {
-
-
-}

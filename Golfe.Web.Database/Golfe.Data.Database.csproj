@@ -82,47 +82,47 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="areajogo.cs">
-      <DependentUpon>Golf.tt</DependentUpon>
+      <DependentUpon>golf.tt</DependentUpon>
     </Compile>
     <Compile Include="funcionarios.cs">
-      <DependentUpon>Golf.tt</DependentUpon>
+      <DependentUpon>golf.tt</DependentUpon>
     </Compile>
-    <Compile Include="Golf.Context.cs">
+    <Compile Include="golf.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Golf.Context.tt</DependentUpon>
+      <DependentUpon>golf.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Golf.cs">
+    <Compile Include="golf.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Golf.tt</DependentUpon>
+      <DependentUpon>golf.tt</DependentUpon>
     </Compile>
-    <Compile Include="Golf.Designer.cs">
+    <Compile Include="golf.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Golf.edmx</DependentUpon>
+      <DependentUpon>golf.edmx</DependentUpon>
     </Compile>
     <Compile Include="maquina.cs">
-      <DependentUpon>Golf.tt</DependentUpon>
+      <DependentUpon>golf.tt</DependentUpon>
     </Compile>
     <Compile Include="operacao.cs">
-      <DependentUpon>Golf.tt</DependentUpon>
+      <DependentUpon>golf.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tarefasgerais.cs">
-      <DependentUpon>Golf.tt</DependentUpon>
+      <DependentUpon>golf.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="Golf.edmx">
+    <EntityDeploy Include="golf.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Golf.Designer.cs</LastGenOutput>
+      <LastGenOutput>golf.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Golf.edmx.diagram">
-      <DependentUpon>Golf.edmx</DependentUpon>
+    <None Include="golf.edmx.diagram">
+      <DependentUpon>golf.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -131,15 +131,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Golf.Context.tt">
+    <Content Include="golf.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Golf.edmx</DependentUpon>
-      <LastGenOutput>Golf.Context.cs</LastGenOutput>
+      <DependentUpon>golf.edmx</DependentUpon>
+      <LastGenOutput>golf.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Golf.tt">
+    <Content Include="golf.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Golf.edmx</DependentUpon>
-      <LastGenOutput>Golf.cs</LastGenOutput>
+      <DependentUpon>golf.edmx</DependentUpon>
+      <LastGenOutput>golf.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

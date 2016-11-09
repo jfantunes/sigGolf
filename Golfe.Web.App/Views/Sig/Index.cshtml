@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SIG Golfe Application</title>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/ol3")
+    @Styles.Render("~/Content/foundationDatePicker")
+    @Styles.Render("~/Content/app")
+
+
+</head>
+<body>
+
+    <nav id="main-navbar"class="navbar navbar-default"></nav>
+    <div id="tarefas" class="row panel-content panel-list" style="display: none"></div>
+    <div id="tarefasFormAdd" class="row panel-content panel-add" style="display: none"></div>
+    <div id="map" class="map row-fluid panel-content panel-map" style="display: none"></div>
+    
+
+    @Scripts.Render("~/bundles/ol3-plugins")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script data-main="../../Scripts/app/main.js" src="../../Scripts/libs/require.js"></script>
+</body>
+</html>

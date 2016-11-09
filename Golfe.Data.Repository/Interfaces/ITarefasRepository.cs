@@ -8,13 +8,13 @@ using Golfe.Web.Database;
 
 namespace Golfe.Data.Repository.Interfaces
 {
-    public interface ITarefasRepository: IDisposable
+    public interface ITarefasRepository
     {
         IEnumerable<Tarefas> GetTarefas();
         Tarefas Find(int id);
         void Edit(int id, Tarefas tarefa);
         void Add(Tarefas tarefa);
         void Delete(int id);
-        void Save(golfEntities db);
+        void Save(golfeEntities db);
     }
 }

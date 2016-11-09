@@ -13,10 +13,10 @@ namespace Golfe.Web.Database
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class golfEntities : DbContext
+    public partial class golfeEntities : DbContext
     {
-        public golfEntities()
-            : base("name=golfEntities")
+        public golfeEntities()
+            : base("name=golfeEntities")
         {
         }
     
@@ -25,10 +25,10 @@ namespace Golfe.Web.Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<areajogo> areajogo { get; set; }
         public virtual DbSet<funcionarios> funcionarios { get; set; }
+        public virtual DbSet<tarefasgerais> tarefasgerais { get; set; }
+        public virtual DbSet<areajogo> areajogo { get; set; }
         public virtual DbSet<maquina> maquina { get; set; }
         public virtual DbSet<operacao> operacao { get; set; }
-        public virtual DbSet<tarefasgerais> tarefasgerais { get; set; }
     }
 }

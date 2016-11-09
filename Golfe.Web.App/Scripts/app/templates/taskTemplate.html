@@ -1,0 +1,65 @@
+﻿    
+    
+    <div class="table-responsive col-md-12">
+        
+        <table class="table table-striped tasks">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Area Jogo</th>
+                    <th>Operacao</th>
+                    <th>Maquina</th>
+                    <th>Funcionario</th>
+                    <th>Concluida</th>
+                    <th>Data Inicio</th>
+                    <th><a class="btn btn-info btn-xs" href="#tarefas/create">Adicionar tarefa</a></th>
+
+                </tr>
+                <tr class="filters">
+                    <th><input type="text" class="form-control" placeholder="Filtrar"></th>
+                    <th><input type="text" class="form-control" placeholder="Filtrar"></th>
+                    <th><input type="text" class="form-control" placeholder="Filtrar"></th>
+                    <th><input type="text" class="form-control" placeholder="Filtrar"></th>
+                    <th><select class="form-control tasks_completion">
+                        <option value="all">Todas</option>
+                        <option value="done">Concluida</option>
+                        <option value="undone">Nao Concluida</option>
+                    </select>
+                    </th>
+                    <th><div class="dropdown ">
+                    <button class="btn btn-default dropdown-toggle form-control" type="button" data-toggle="dropdown">Ordenar  <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li class="desc"><a href="#">Descendente</a></li>
+                        <li class="asc"><a href="#">Crescente</a></li>
+                    </ul>
+                </div></th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+            <% _.each(tasks, function (task) { %>
+
+            <tr>
+                <td class="itemTarefa"><%=task.AreaJogo%></td>
+                <td class="itemTarefa"><%=task.Operacao%></td>
+                <td class="itemTarefa"><%=task.Maquina%></td>
+                <td class="itemTarefa"><%=task.Funcionario%></td>
+                <% if (task.Concluida===true){%>
+                <td class="bg-success itemTarefa" data-value="<%=task.Concluida%>">Concluida</td>
+                <% } else {%>
+                <td class="bg-danger itemTarefa" data-value="<%=task.Concluida%>">Nao Concluida</td>
+                <% } %>
+                <td class="itemTarefa"><%=task.Data.toString().slice(0,10)%></td>
+                <td class="actions">
+                    <a class="btn btn-success btn-xs task_finish" data-id="<%= task.Id %>" href="#">Concluir</a>
+                    <a class="btn btn-danger btn-xs task_removal" data-id="<%= task.Id %>" href="#">Excluir</a>
+                </td>
+            </tr>
+            <% }); %>
+            </tbody>
+        </table>
+
+        
+
+    </div>

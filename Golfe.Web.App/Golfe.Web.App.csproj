@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -135,18 +136,10 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\TodoController.cs" />
-    <Compile Include="Controllers\TodoListController.cs" />
+    <Compile Include="Controllers\SigController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\TodoItemDto.cs" />
-    <Compile Include="Models\TodoListDto.cs" />
-    <Compile Include="Models\TodoList.cs" />
-    <Compile Include="Models\TodoItem.cs" />
-    <Compile Include="Models\TodoItemContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +147,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\foundation-datepicker.css" />
+    <Content Include="Content\foundation-datepicker.min.css" />
+    <Content Include="Content\ol3-layerswitcher.css" />
+    <Content Include="Content\ol3-popup.css" />
+    <Content Include="Content\ol3.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -165,20 +163,40 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Images\golf_flag.png" />
+    <Content Include="Scripts\app\map\styles.js" />
+    <Content Include="Scripts\app\map\sourceController.js" />
+    <Content Include="Scripts\app\main.js" />
+    <Content Include="Scripts\app\collections\taskCollection.js" />
+    <Content Include="Scripts\app\controller\appController.js" />
+    <Content Include="Scripts\app\models\taskModel.js" />
     <Content Include="Scripts\app\router\router.js" />
+    <Content Include="Scripts\app\templates\addTaskTemplate.html" />
+    <Content Include="Scripts\app\templates\taskTemplate.html" />
+    <Content Include="Scripts\app\views\addTaskView.js" />
+    <Content Include="Scripts\app\views\tabView.js" />
+    <Content Include="Scripts\app\views\tasksView.js" />
     <Content Include="Scripts\libs\backbone.js" />
     <Content Include="Scripts\libs\backbone.min.js" />
     <Content Include="Scripts\libs\backbone.min.map" />
+    <Content Include="Content\foundation-datepicker.css.map" />
+    <Content Include="Scripts\app\templates\tabTemplate.html" />
     <None Include="Scripts\libs\jquery-1.9.1.intellisense.js" />
-    <Content Include="Scripts\app\views\map.js" />
+    <Content Include="Scripts\app\views\mapView.js" />
     <Content Include="Scripts\libs\bootstrap.js" />
     <Content Include="Scripts\libs\bootstrap.min.js" />
+    <Content Include="Scripts\libs\foundation-datepicker.js" />
+    <Content Include="Scripts\libs\foundation-datepicker.min.js" />
     <Content Include="Scripts\libs\jquery-1.9.1.js" />
     <Content Include="Scripts\libs\jquery-1.9.1.min.js" />
     <Content Include="Scripts\libs\jquery-1.9.1.min.map" />
     <Content Include="Scripts\libs\modernizr-2.6.2.js" />
-    <Content Include="Scripts\libs\r.js" />
+    <Content Include="Scripts\libs\moment.js" />
+    <Content Include="Scripts\libs\ol3-layerswitcher.js" />
+    <Content Include="Scripts\libs\ol3-popup.js" />
+    <Content Include="Scripts\libs\ol3.js" />
     <Content Include="Scripts\libs\require.js" />
+    <Content Include="Scripts\libs\text.js" />
     <Content Include="Scripts\libs\underscore.js" />
     <Content Include="Scripts\libs\underscore.min.js" />
     <Content Include="Web.config" />
@@ -188,31 +206,14 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
-    <Content Include="Content\TodoList.css" />
+    <Content Include="Content\app.css" />
     <Content Include="Scripts\libs\_references.js" />
-    <Content Include="Images\accent.png" />
-    <Content Include="Images\bullet.png" />
-    <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\orderedList0.png" />
-    <Content Include="Images\orderedList1.png" />
-    <Content Include="Images\orderedList2.png" />
-    <Content Include="Images\orderedList3.png" />
-    <Content Include="Images\orderedList4.png" />
-    <Content Include="Images\orderedList5.png" />
-    <Content Include="Images\orderedList6.png" />
-    <Content Include="Images\orderedList7.png" />
-    <Content Include="Images\orderedList8.png" />
-    <Content Include="Images\orderedList9.png" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\libs\underscore.min.map" />
+    <Content Include="Views\Sig\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\app\collections\" />
-    <Folder Include="Scripts\app\models\" />
-    <Folder Include="Scripts\app\templates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

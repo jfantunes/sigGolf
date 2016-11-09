@@ -1,0 +1,72 @@
+﻿<%
+    console.log(dataForForm);
+    funcionary = dataForForm.functionaries;
+    operations = dataForForm.operations;
+    machines = dataForForm.machines;
+    gameAreas= dataForForm.gameAreas;
+    
+%>
+
+   <div class="container">
+    <div class="col-lg-10">
+        <fieldset>
+            <legend>Adicionar descrição tarefa</legend>
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="funcionario_nome" class="col-lg-3 control-label">Funcionario</label>
+                    <div class="col-lg-6">
+                        <select id="funcionario_nome" class="form-control" name="selValue">
+                            <% _.each(funcionary, function (func) { %>
+                            <option value="<%=func.Nome%>"><%=func.Nome%></option>
+                            <%});%>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="operacao_nome" class="col-lg-3 control-label">Operacao</label>
+                    <div class="col-lg-6">
+                        <select class="form-control" id="operacao_nome" name="selValue">
+                            <% _.each(operations, function (op) { %>
+                            <option value="<%=op.Nome%>"><%=op.Nome%></option>
+                            <%});%>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="maquina_nome" class="col-lg-3 control-label">Maquina</label>
+                    <div class="col-lg-6">
+                        <select class="form-control" id="maquina_nome" name="selValue">
+                            <% _.each(machines, function (ma) { %>
+                            <option value="<%=ma.Nome%>"><%=ma.Nome%></option>
+                            <%});%>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="areas_nome" class="col-lg-3 control-label">Area Jogo</label>
+                    <div class="col-lg-6">
+                        <select class="form-control" id="areas_nome" name="selValue">
+                            <% _.each(gameAreas, function (ga) { %>
+                            <option value="<%=ga.Area%>"><%=ga.Area%></option>
+                            <%});%>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="data_valor" class="col-lg-3 control-label">Data</label>
+                    <div class="col-lg-6">
+                        <input type="text" id="data_valor" class="form-control dateWidget">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-10">
+                        <button class="btn btn-success add-task">Guardar</button> 
+                        <a href="#" class="btn btn-primary cancel-task">Cancelar</a>
+                    </div>
+                </div>
+            </form>
+        </fieldset>        
+            </div>
+                
+    </div>
+    

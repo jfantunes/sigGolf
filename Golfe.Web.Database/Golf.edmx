@@ -4,13 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="golfModel.Store" Provider="Npgsql" ProviderManifestToken="9.5.3" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="golfeModel.Store" Provider="Npgsql" ProviderManifestToken="9.4.4" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'golfe.public.areajogo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="areajogo">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int4" Nullable="false" />
-          <Property Name="area" Type="text" Nullable="false" />
+          <Property Name="area" Type="text" />
         </EntityType>
         <EntityType Name="funcionarios">
           <Key>
@@ -20,19 +22,23 @@
           <Property Name="email" Type="text" Nullable="false" />
           <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'golfe.public.maquina' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="maquina">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="nome" Type="text" Nullable="false" />
-          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="nome" Type="text" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'golfe.public.operacao' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="operacao">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="nome" Type="text" Nullable="false" />
-          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int4" Nullable="false" />
+          <Property Name="nome" Type="text" />
         </EntityType>
         <EntityType Name="tarefasgerais">
           <Key>
@@ -46,45 +52,30 @@
           <Property Name="concluida" Type="bool" Nullable="false" />
           <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="golfModelStoreContainer">
-          <EntitySet Name="areajogo" EntityType="Self.areajogo" Schema="public" store:Type="Tables" />
+        <EntityContainer Name="golfeModelStoreContainer">
           <EntitySet Name="funcionarios" EntityType="Self.funcionarios" Schema="public" store:Type="Tables" />
-          <EntitySet Name="maquina" EntityType="Self.maquina" Schema="public" store:Type="Tables" />
-          <EntitySet Name="operacao" EntityType="Self.operacao" Schema="public" store:Type="Tables" />
           <EntitySet Name="tarefasgerais" EntityType="Self.tarefasgerais" Schema="public" store:Type="Tables" />
+          <EntitySet Name="areajogo" EntityType="Self.areajogo" store:Type="Tables" store:Schema="public">
+            <DefiningQuery>SELECT "areajogo"."id", "areajogo"."area" FROM "public"."areajogo" AS "areajogo"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="maquina" EntityType="Self.maquina" store:Type="Tables" store:Schema="public">
+            <DefiningQuery>SELECT "maquina"."id", "maquina"."nome" FROM "public"."maquina" AS "maquina"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="operacao" EntityType="Self.operacao" store:Type="Tables" store:Schema="public">
+            <DefiningQuery>SELECT "operacao"."id", "operacao"."nome" FROM "public"."operacao" AS "operacao"</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="golfModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="areajogo">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="area" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
+      <Schema Namespace="golfeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="funcionarios">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="maquina">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="operacao">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="tarefasgerais">
@@ -99,29 +90,42 @@
           <Property Name="concluida" Type="Boolean" Nullable="false" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
-        <EntityContainer Name="golfEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="areajogo" EntityType="Self.areajogo" />
+        <EntityType Name="areajogo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="area" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="maquina">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="operacao">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="golfeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="funcionarios" EntityType="Self.funcionarios" />
+          <EntitySet Name="tarefasgerais" EntityType="Self.tarefasgerais" />
+          <EntitySet Name="areajogo" EntityType="Self.areajogo" />
           <EntitySet Name="maquina" EntityType="Self.maquina" />
           <EntitySet Name="operacao" EntityType="Self.operacao" />
-          <EntitySet Name="tarefasgerais" EntityType="Self.tarefasgerais" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="golfModelStoreContainer" CdmEntityContainer="golfEntities">
-          <EntitySetMapping Name="areajogo">
-            <EntityTypeMapping TypeName="golfModel.areajogo">
-              <MappingFragment StoreEntitySet="areajogo">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="area" ColumnName="area" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+        <EntityContainerMapping StorageEntityContainer="golfeModelStoreContainer" CdmEntityContainer="golfeEntities">
           <EntitySetMapping Name="funcionarios">
-            <EntityTypeMapping TypeName="golfModel.funcionarios">
+            <EntityTypeMapping TypeName="golfeModel.funcionarios">
               <MappingFragment StoreEntitySet="funcionarios">
                 <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="email" ColumnName="email" />
@@ -129,24 +133,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="maquina">
-            <EntityTypeMapping TypeName="golfModel.maquina">
-              <MappingFragment StoreEntitySet="maquina">
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="operacao">
-            <EntityTypeMapping TypeName="golfModel.operacao">
-              <MappingFragment StoreEntitySet="operacao">
-                <ScalarProperty Name="nome" ColumnName="nome" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tarefasgerais">
-            <EntityTypeMapping TypeName="golfModel.tarefasgerais">
+            <EntityTypeMapping TypeName="golfeModel.tarefasgerais">
               <MappingFragment StoreEntitySet="tarefasgerais">
                 <ScalarProperty Name="areajogo" ColumnName="areajogo" />
                 <ScalarProperty Name="operacao" ColumnName="operacao" />
@@ -155,6 +143,30 @@
                 <ScalarProperty Name="data" ColumnName="data" />
                 <ScalarProperty Name="concluida" ColumnName="concluida" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="areajogo">
+            <EntityTypeMapping TypeName="golfeModel.areajogo">
+              <MappingFragment StoreEntitySet="areajogo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="area" ColumnName="area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="maquina">
+            <EntityTypeMapping TypeName="golfeModel.maquina">
+              <MappingFragment StoreEntitySet="maquina">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="operacao">
+            <EntityTypeMapping TypeName="golfeModel.operacao">
+              <MappingFragment StoreEntitySet="operacao">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
